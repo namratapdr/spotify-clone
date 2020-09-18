@@ -1,0 +1,20 @@
+.sidebar{
+    height: 100vh;
+    flex:0.2;
+    background-color: #040404;
+    min-width: 230px;
+    color: white;
+    padding: 0 10px;
+}
+.sidebar-logo{
+    margin-right: auto;
+    height:65px;
+    padding: 10px 0;
+}
+.sidebar_title{
+    color: gray;
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 13px;
+    letter-spacing: 0.1ch;
+}

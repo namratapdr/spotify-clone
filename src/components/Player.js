@@ -1,10 +1,18 @@
 import React from 'react'
+import { Body } from './Body'
+import { Footer } from './Footer'
+import { Sidebar } from './Sidebar'
+import "./styles/Player.css"
 
-
-const Player = () => {
+const Player = ({spotify}) => {
     return(
-        <div>
-             <h1>I AM LOGGED IN</h1>
+        <div className="player">
+            {console.log(spotify)} 
+            <div className="player_body">
+                <Sidebar/>
+                <Body/>
+            </div>
+                <Footer/>
         </div>
     )
 }
