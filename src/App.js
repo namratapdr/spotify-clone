@@ -1,4 +1,4 @@
-import React,{ useEffect , useState} from 'react'
+import React,{ useEffect } from 'react'
 import './App.css'
 import Login from './components/Login'
 import { getAccessToken } from './components/spotify'
@@ -13,9 +13,10 @@ const spotifyOb = new SpotifyWebApi()
 
 function App() {
 
-    const [token , setToken] = useState(null)
-    const [{user},dispatch] = useDataLayerValue()
-
+    //const [token , setToken] = useState(null)
+    const [{user,token},dispatch] = useDataLayerValue()
+            //DataLayer.user is destructured in this
+            //state in {} will get everything
     useEffect(() => {
       const hash = getAccessToken();
       window.location.hash=""
@@ -23,12 +24,15 @@ function App() {
 
       if (_token){
 
-        setToken (_token)
-        
+        dispatch(
+          {
+            type: 'SET_TOKEN',
+            token: _token,
+          }
+        )
         spotifyOb.setAccessToken(_token) //spotify object from spotify WebApi Wrapper which helps us communicate with Spotify app
 
         spotifyOb.getMe().then(user => {
-        
           dispatch(
             {
               type: 'SET_USER',
@@ -40,11 +44,11 @@ function App() {
       }
 
     
-    },[])
+    },[dispatch])
     console.log("User: ",user)
   return (
     <div className="App">
-      { token ?  <Player/> :  <Login/>}
+      { token ?  <Player spotify={spotifyOb}/> :  <Login/>}
     </div>
   );
 }
