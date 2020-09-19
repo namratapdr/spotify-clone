@@ -14,7 +14,7 @@ const spotifyOb = new SpotifyWebApi()
 function App() {
 
     //const [token , setToken] = useState(null)
-    const [{user,token},dispatch] = useDataLayerValue()
+    const [{user,token,playlists},dispatch] = useDataLayerValue()
             //DataLayer.user is destructured in this
             //state in {} will get everything
     useEffect(() => {
@@ -40,12 +40,19 @@ function App() {
             }
           )
         })
-
+        spotifyOb.getUserPlaylists().then((playlists) => {
+          dispatch(
+            {
+              type: 'SET_PLAYLISTS',
+              playlists:playlists,
+            }
+          )
+        })
       }
 
     
     },[dispatch])
-    console.log("User: ",user)
+    console.log("User: ",user,playlists)
   return (
     <div className="App">
       { token ?  <Player spotify={spotifyOb}/> :  <Login/>}
