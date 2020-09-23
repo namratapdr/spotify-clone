@@ -6,6 +6,11 @@
     color: white;
     padding: 10px 10px;
 }
+@media(max-width:490px){
+    .sidebar{
+        min-width: 180px;
+    }
+}
 .sidebar-logo{
     margin-right: auto;
     height:65px;
