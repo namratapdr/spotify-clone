@@ -6,13 +6,20 @@ export const SongRow = ({track}) => {
     const [{play_uri},dispatch] = useDataLayerValue()
    
     function handleClick(){
+    
        dispatch(
             {
                 type:'SET_PLAY_URI',
                 play_uri:track.uri,
             }
         )
-        
+        dispatch({
+            type: "SET_PLAYING",
+            playing: true,
+          })
+          
+        if (play_uri )
+        console.log("👍")
     }
     
     return(
