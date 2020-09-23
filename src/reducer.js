@@ -3,7 +3,7 @@ export const initialState = {
     playlists:[],
     playing:false,
     item: null,
-    token:"BQBsHxqRTAdgED4QP4HCcZJ4-hgYzCZkKSWemHxIxmf_yyKbJkDRoa0ctdLHP_OyWm6-r5oZfrWERfHiVgFuh1wTVECFJysCZbNB0GznpsfvAky3N42pNvIzw5Zw5XvCiPWpA6EJSQCeePQtK6BEKuc2MOA",
+    token:null,
 }//empty initialState
 
 //https://reactjs.org/docs/hooks-reference.html#usereducer
@@ -33,6 +33,11 @@ export const reducer = (state , action) => {
             ...state,
             playlists:action.playlists
           }
+          case 'SET_DISCOVER_WEEKLY':
+            return{
+              ...state,
+              discover_weekly:action.discover_weekly,
+            }
         default:
             return state //if nothing happens just returns state as it is
     }

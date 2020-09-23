@@ -2,7 +2,10 @@ import React from 'react'
 import "./styles/Header.css"
 import SearchIcon from '@material-ui/icons/Search'
 import { Avatar } from '@material-ui/core'
+import {useDataLayerValue} from '../DataLayer'
+
 export const Header = () => {
+    const [{user},dispatch] = useDataLayerValue()
     return(
         <header>
             <div className="header_left">
@@ -13,8 +16,8 @@ export const Header = () => {
                     />
             </div>
             <div className="header_right"> 
-            <Avatar src="" alt="NP" />
-                <h4>Namrata </h4>
+            <Avatar src={user?.images[0]?.url} alt="NP" />
+                <h4>{user?.display_name} </h4>
             </div>
         </header>
     )
