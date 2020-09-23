@@ -6,6 +6,8 @@ export const initialState = {
     playing:false,
     item: null,
     token:null,
+    play_uri:"spotify:playlist:37i9dQZEVXcIdICMRECAXa",
+    //enter your own discover weekly uri before production
 }//empty initialState
 
 //https://reactjs.org/docs/hooks-reference.html#usereducer
@@ -56,6 +58,11 @@ export const reducer = (state , action) => {
               return {
                 ...state,
                 item: action.item,
+              }
+            case "SET_PLAY_URI":
+              return{
+                ...state,
+                play_uri:action.play_uri
               }
         default:
             return state //if nothing happens just returns state as it is

@@ -15,9 +15,9 @@ import SpotifyPlayer from 'react-spotify-web-playback'
 //https://github.com/gilbarbara/react-spotify-web-playback
 
 export const Footer =({spotify})=>{
-    const [{ token, playing }, dispatch] = useDataLayerValue()
+    const [{play_uri, token, playing }, dispatch] = useDataLayerValue()
 
-
+    let track=null
     useEffect(() => {
         spotify.getMyCurrentPlaybackState().then((r) => {
           console.log(r)
@@ -25,7 +25,7 @@ export const Footer =({spotify})=>{
           dispatch({
             type: "SET_PLAYING",
             playing: r.is_playing,
-          });
+          })
     
           dispatch({
             type: "SET_ITEM",
@@ -34,23 +34,20 @@ export const Footer =({spotify})=>{
         })
       }, [spotify,dispatch])
 
-    /*  const handlePlayPause = () => {
-        if (playing) {
-          spotify.pause();
+     const handleChange = () => {
+        dispatch({
+          type: "SET_ITEM",
+          item: track,
+        })
+        if(!track.isPlaying){
           dispatch({
             type: "SET_PLAYING",
-            playing: false,
-          });
-        } else {
-          spotify.play();
-          dispatch({
-            type: "SET_PLAYING",
-            playing: true,
+            playing: track.isPlaying
           })
         }
       }
 
-      const skipNext = () => {
+    /*  const skipNext = () => {
         spotify.skipToNext()
         spotify.getMyCurrentPlayingTrack().then((r) => {
           dispatch({
@@ -80,10 +77,10 @@ export const Footer =({spotify})=>{
     return(
         <footer >
             <div className="footer_player_container">
-            <SpotifyPlayer
+            <SpotifyPlayer 
                 name='Spotify-clone'
                 token={token}
-                uris={['spotify:playlist:37i9dQZEVXcIdICMRECAXa']}
+                uris={[play_uri]}
                 styles={{
                     bgColor: ' #282828',
                     color: '#fff',
@@ -96,6 +93,12 @@ export const Footer =({spotify})=>{
                     sliderHandleColor: "#fff"
                   }}
                 play={playing}
+                callback={(state)=>{
+                    track=state
+                    if (track.isPlaying){
+                      handleChange()
+                    }
+                }}
                 />
             </div>
         </footer>
