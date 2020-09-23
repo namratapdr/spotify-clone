@@ -49,6 +49,14 @@ function App() {
           )
         })
       }
+      spotifyOb.getMyTopArtists().then((response) =>
+        dispatch({
+          type: "SET_TOP_ARTISTS",
+          top_artists: response,
+        })
+      );
+
+      //enter your own discover weekly playlist id to get your songs
       spotifyOb.getPlaylist("37i9dQZEVXcIdICMRECAXa").then((response)=>{
         dispatch(
           {
@@ -57,9 +65,10 @@ function App() {
           }
         )
       })
-
-    },[dispatch])
+      
+    },[token,dispatch])
   return (
+      
     <div className="App">
       { token ?  <Player spotify={spotifyOb}/> :  <Login/>}
     </div>

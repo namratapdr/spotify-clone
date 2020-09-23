@@ -5,6 +5,7 @@
     padding: 30px;
     color: white;
     overflow-y: overlay;
+    margin-bottom: 35px;
 }
 .body::-webkit-scrollbar{
     display: none;

@@ -6,7 +6,10 @@ footer{
     background-color: #282828;
     padding: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+}
+footer::-webkit-scrollbar{
+    display: none;
 }
 .footer_left{
     flex:0.3;
@@ -50,4 +53,24 @@ footer{
 }
 .footer_right * .MuiSlider-root {
     color: #1DB954;
+}
+.footer_player_container{
+    width: 90%;
+}
+@media (max-width:1024px){
+    footer{
+        position: fixed;
+        bottom: 0;
+        height: 50px;
+        width:100%;
+        background-color: #282828;
+        padding: 35px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .footer_player_container{
+        width: 80%;
+    }
+
 }

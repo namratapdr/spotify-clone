@@ -6,9 +6,12 @@ const redirectUri ="http://localhost:3000/"
 const clientId = "b520e14a69d84d1692b7579b03d3d74d"
 
 const scopes = [
-    "user-read-currently-playing",
+  "streaming",
+  "user-read-currently-playing",
   "user-read-recently-played",
   "user-read-playback-state",
+  "user-read-email",
+  "user-read-private",
   "user-top-read",
   "user-modify-playback-state",
 ]

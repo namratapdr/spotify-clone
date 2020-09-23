@@ -20,7 +20,7 @@ export const Sidebar = () => {
             <hr/>
 
             {playlists?.items?.map(playlist => (
-                <SidebarOption  option={playlist.name}/>
+                <SidebarOption  key={playlist.id} option={playlist.name}/>
             ))}
         </div>
     )
