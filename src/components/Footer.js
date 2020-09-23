@@ -11,9 +11,11 @@ import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay"
 import { Grid, Slider } from "@material-ui/core"*/
 import { useDataLayerValue } from '../DataLayer'
 import SpotifyPlayer from 'react-spotify-web-playback'
+//npm i react-spotify-web-playback
+//https://github.com/gilbarbara/react-spotify-web-playback
 
 export const Footer =({spotify})=>{
-    const [{ token, item, playing }, dispatch] = useDataLayerValue()
+    const [{ token, playing }, dispatch] = useDataLayerValue()
 
 
     useEffect(() => {
