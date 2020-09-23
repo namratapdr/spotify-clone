@@ -1,7 +1,7 @@
 // https://developer.spotify.com/documentation/web-playback-sdk/quick-start/#
 export const authEndpoint = "https://accounts.spotify.com/authorize"
 
-const redirectUri ="https://platify.netlify.app"
+const redirectUri ="https://platify.netlify.app/"
 
 const clientId = "b520e14a69d84d1692b7579b03d3d74d"
 
